@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scroll Animation</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		html, body {
+			overflow-x: hidden;
+			font-family: sans-serif;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		h1 {
+			text-transform: uppercase;
+			margin: 10px 0;
+		}
+		.box {
+			background: lightblue;
+			width: 300px;
+			height: 200px;
+			margin: 10px 0;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			transform: translateX(200%);
+			text-decoration: none;
+			text-transform: uppercase;
+			color: #fff;
+			font-size: 30px;
+			transition: transform 0.4s ease;
+			box-shadow: 2px 2px 5px gray;
+		}
+		.box:nth-of-type(even) {
+			transform: translateX(-200%);
+		}
+		.box.show {
+			transform: translateX(0);
+		}
+		.box:hover {
+			transform: scale(0.88);
+		}
+	</style>
+</head>
+<body>
+	<h1>my projects</h1>
+	<a href="#" class="box" target="_blank">Project1</a>
+	<a href="#" class="box" target="_blank">Project2</a>
+	<a href="#" class="box" target="_blank">Project3</a>
+	<a href="#" class="box" target="_blank">Project4</a>
+	<a href="#" class="box" target="_blank">Project5</a>
+	<a href="#" class="box" target="_blank">Project6</a>
+	<a href="#" class="box" target="_blank">Project7</a>
+	<a href="#" class="box" target="_blank">Project8</a>
+	<a href="#" class="box" target="_blank">Project9</a>
+	<a href="#" class="box" target="_blank">Project10</a>
+</body>
+<script type="text/javascript">
+	let box = document.querySelectorAll('.box');
+
+	window.addEventListener('scroll', displayBoxes);
+	displayBoxes();
+
+	function displayBoxes() {
+		let toggleBottom = window.innerHeight / 5 * 4;
+		box.forEach(item => {
+			let boxTop = item.getBoundingClientRect().top;
+			if (boxTop < toggleBottom) {
+				item.classList.add('show');
+			}
+			else {
+				item.classList.remove('show');
+			}
+		});
+	}
+</script>
+</html>
